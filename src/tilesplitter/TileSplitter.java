@@ -44,24 +44,26 @@ class TileSplitter
 
 	public BufferedImage SaveImage() // method to capture and save a SubImage of "input"
 	{
-		int x = 1, y = 0, w = 8, h = 12;     // width was 8, height was 12
+		int x = 0, y = 0, w = 8, h = 12;     // width was 8, height was 12
 	//	testArray = new BufferedImage[16];
 		tileArray = new BufferedImage[imageWidth/8][imageHeight/12]; // divisors were 8 and 12 respectively, both values = 16
 
 		try
 		{
-			for (int row = 0; row <= 14; row = row + 1)
+			for (int row = 0; row <= 15; row++)
 			{
                             System.out.println("row = " + row);
-				for (int column = 0; column <= 14; column = column + 1) // was column <= 15
+				for (int column = 0; column <= 15; column++) // was column <= 15
 				{
-                                    System.out.println("column = " + column);
-					tileArray[column][row] = input.getSubimage(x,y,w,h);
-					x = x + 8; // was x = x + 7
+                                    System.out.println("column = " + column + ", x = " + x + ", y = " + y);
+					tileArray[row][column] = input.getSubimage(x, y, w, h);    // (x, y, w, h) row and column were reversed as indices
+                                        x = x + 8; // was x = x + 7                                            
+                                       
 				}
+                                x = 0;
 				y = y + 12; // was y = y + 12
 			}
-			return testImage = tileArray[1][2];
+			return testImage = tileArray[3][6];
 			}
 		finally{}
 		}
