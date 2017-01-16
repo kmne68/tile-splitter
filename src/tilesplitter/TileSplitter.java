@@ -43,7 +43,7 @@ class TileSplitter {
     public void ShowImage(BufferedImage test) {
         try {
             BufferedImage output = test;
-            File fo = new File("C:\\java\\images\\sub_image20170113.png");
+            File fo = new File("C:\\java\\images\\sub_image20170114.png");
             ImageIO.write(output, "PNG", fo);
         } catch (IOException e) {
             System.out.println("Writing to output failed.");
@@ -185,8 +185,31 @@ class TileSplitter {
         System.out.println("the color model of the image is " + cm);		// print the pixel model for testing purposes
         return cm.hasAlpha();
     }
+    
+  /*  public static BufferedImage filterImage() {
+                Image filteredImage = null;
+        BufferedImage newBuff = null;
 
+    //    TileSplitter splitter = new TileSplitter();
+        splitter.LoadImage();
+        //	testOut = splitter.SaveImage(); // Capture and save the SubImage
+        testOut = splitter.getRandomImage();
+       
+        
+   //     splitter.ShowImage(testOut);
+
+        filteredImage = splitter.MakeColorTransparent(testOut, Color.magenta); //new Color(0).blue);
+        newBuff = toBufferedImage(filteredImage);
+
+        splitter.ShowImage(newBuff);
+        return newBuff;
+    } */
+    
+    
     public static void main(String args[]) {
+        
+     //   filterImage();
+        
         Image filteredImage = null;
         BufferedImage newBuff = null;
 
@@ -194,11 +217,13 @@ class TileSplitter {
         splitter.LoadImage();
         //	testOut = splitter.SaveImage(); // Capture and save the SubImage
         testOut = splitter.getRandomImage();
-        splitter.ShowImage(testOut);
+       
+        
+   //     splitter.ShowImage(testOut);
 
         filteredImage = splitter.MakeColorTransparent(testOut, Color.magenta); //new Color(0).blue);
         newBuff = toBufferedImage(filteredImage);
 
-        splitter.ShowImage(newBuff);
+        splitter.ShowImage(newBuff); 
     }
 }
